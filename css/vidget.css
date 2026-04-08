@@ -1,0 +1,82 @@
+:root {
+        --primary: #6366f1;
+        --bg-glow: rgba(99, 102, 241, 0.15);
+    }
+
+.dev-card {
+        width: 320px;
+        margin: 0 auto; /* 0 сверху/снизу, auto по бокам */
+        padding: 24px;
+        background: blue;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        color: white;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+.dev-card:hover {
+        transform: translateY(-5px);
+        background: yellowgreen;
+        color: red;
+        border-color: var(--primary);
+        box-shadow: 0 15px 40px var(--bg-glow);
+    }
+
+.badge {
+        background: var(--primary);
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+.stats {
+        display: flex;
+        gap: 30px;
+        margin: 20px 0;
+    }
+
+.value {
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+.label {
+        font-size: 12px;
+        opacity: 0.6;
+    }
+
+.skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+.skill-tag {
+        background: green;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+.contact-btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 12px;
+        background: yellow;
+        color: red;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+.contact-btn:hover {
+        opacity: 0.9;
+    }

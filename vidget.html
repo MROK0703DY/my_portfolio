@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="This is the basic HTML-5 template needed to start a webpage from scratch. The meta description tag describes what the page is about. Should be over 50 characters and less than around 160 characters. Search engines sometimes this is used to provide a preview snippet.">
+    <meta name="keywords" content="basic, html, template">
+    <title>Title of Your Page</title>
+    <!-- CSS file to load -->
+    <link rel="stylesheet" href="css/vidget.css">
+</head>
+
+<body>
+    
+    <div class="dev-card">
+        <div class="card-header">
+            <div class="badge"> {% extends 'main/layout.html' %}</div><br>
+
+            <div class="badge">
+            {%block content%}
+                <h2>Главная страница</h2>
+                <p>Содержание</p>
+            {% endblock %}
+            </div><br>
+
+            <div class="badge">{% include 'includes/header.html' %}</div><br>
+
+            <div id="include" class="badge"></div><br>
+
+            <button id="neon" class="contact-btn">Добавить новый текст</button>
+        </div>
+    </div>
+    
+    <!-- javascript file to load -->
+    <script src="#"></script>
+    
+    <!-- javascript code -->
+    <script>
+       document.getElementById('neon').addEventListener('click', function() {
+            const element = document.getElementById('include');
+            if (element) {
+                element.textContent = 'Привет, это новый текст!';
+            }
+        }); // Теперь скобки закрыты корректно
+
+        console.log('Ok'); 
+    </script>
+</body>
+</html>

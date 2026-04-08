@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <!--  <link rel="stylesheet" href="setting.css">  -->
+    <link rel="stylesheet" href="css/news.css">
+    <title>FlashNews!</title>
+  </head>
+
+  <body class="page light-theme">
+    <header class="page-header">
+      <div class="container">
+        <a class="header-link" href="#">На главную</a>
+        <button class="theme-button" type="button">Изменить тему</button>
+      </div>
+    </header>
+
+    <main class="inner-main">
+      <div class="container">
+        <h1 class="inner-heading">Подпишитесь на нашу рассылку</h1>
+
+        <form class="subscription">
+          <div class="subscription-inner">
+            <label class="subscription-label" for="subscription-email">email</label>
+            <input class="subscription-email" type="email" id="emailInput" placeholder="Введите email">
+          </div>
+
+          <button class="button subscription-button" type="button" id="copyButton">Подписаться</button>
+          <p id="resultP" class="outputParagraph">Обещаем присылать вам новости не чаще одного раза в день, причём только самые интересные и важные.</p>
+        </form>
+
+        <section class="news-list list-tiles-view">
+          <h2 class="news-list-heading">Или почитайте ещё немного новостей</h2>
+          <article class="new-block" onclick="window.location.href='https://practicum.yandex.ru/blog/biblioteka-matplotlib-dlya-vizualizacii-dannyh/'" >Нажмите на меня для перехода
+            <img src="https://htmlacademy.ru/assets/courses/343/img/new-graph.jpg" alt="Новая библиотека">
+            <div class="new-block-text">
+              <h3>Новая библиотека для создания графиков</h3>
+              <p>Теперь вы можете создать дашборд за считанные секунды.</p>
+              <time datetime="2019-10-16">16 октября 2019</time>
+            </div>
+          </article>
+          <article class="new-block" onclick="window.location.href='https://rb.ru/stories/no-humanlike-robots/'">Нажмите на меня для перехода
+            <img src="https://htmlacademy.ru/assets/courses/343/img/new-robot.jpg" alt="Что там у роботов?">
+            <div class="new-block-text">
+              <h3>Что там у роботов?</h3>
+              <p>В робототехнике происходит много интересного, эта новость могла бы быть об этом, но нет.</p>
+              <time datetime="2019-10-15">15 октября 2019</time>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+
+    <div id="resultOutput" style="font-size: 26px;">
+        Информация появится здесь
+        Чтобы div растягивался по содержимому, в CSS установите свойство display как block или inline-block 
+        и не задавайте фиксированную высоту, тогда высота div будет адаптироваться к количеству 
+        содержимого автоматически. Если нужно, чтобы div растягивался до полной ширины родителя, 
+        достаточно не указывать ширину явно, так как по умолчанию div занимает всю доступную ширину.
+        SuperAgent
+        SuperAgent - один из первых сторонних пакетов, представленных в JavaScript для выполнения 
+        HTTP-запросов. Подобно Axios, он использует XMLHttpRequest API в своей реализации и поставляется 
+        с полным набором функций, полезных в ряде задач обработки запросов.
+        Подключается пакет либо через менеджер, либо в HTML 
+        При отправке HTTP-запросов с помощью SuperAgent мы можем полагаться на его специальные методы 
+        для инициирования запроса определенного типа. Например, мы можем использовать метод superagent.get() 
+        для отправки GET-запросов.
+
+  </div>
+
+    <footer class="page-footer">
+      <div id="div-footer" class="container">
+        <p>© OkFlashNews!</p>
+        <a class="footer-logo">
+          <img src="https://i.pinimg.com/originals/35/7a/9e/357a9e87c7da8ae21ef1a8f00e2e25cc.jpg" width="100px" height="50px" alt="Логотип портала FlashNews!">
+        </a>
+      </div>
+    </footer>
+    <script src="js/news.js"></script>
+  </body>
+</html>

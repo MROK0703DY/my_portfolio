@@ -4,9 +4,14 @@ from datetime import datetime, date
 now = datetime.now()
 print(f"\033[1;31m Текущие дата и время: {now} \033[0m")  # Выведет что-то
 # вроде: 2025-12-07 10:30:00.123456
+print()
 
 # 2. Получение только текущей даты
 today = date.today()
+# Используем формат %d-%m-%Y для обратного порядка
+reversed_date = today.strftime("%d-%m-%Y")
+print(f"Только сегодняшняя дата: {reversed_date}")
+
 print()
 print(f"Только сегодняшняя дата: {today}")  # Выведет: 2025-12-07
 
