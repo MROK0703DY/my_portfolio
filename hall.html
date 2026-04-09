@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="This is the basic HTML-5 template needed to start a webpage from scratch. The meta description tag describes what the page is about. Should be over 50 characters and less than around 160 characters. Search engines sometimes this is used to provide a preview snippet.">
+<meta name="keywords" content="basic, html, template">
+<title>Мой проект на Django. Главная страница</title>
+<!-- CSS file to load -->
+<link rel="stylesheet" href="">
+
+<!-- CSS styles -->
+<style>
+
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 100vh;
+        color: red;
+    }
+
+    .header {
+        background-color: #ef2542;
+        padding: 15px 20px;
+        display: flex; /* Используем Flexbox для выравнивания */
+        justify-content: space-between; /* Логотип слева, ссылки справа */
+        align-items: center; /* Вертикальное выравнивание */
+        border-bottom: 1px solid #eee;
+        width: auto;
+        height: 230px;
+      }
+    .logo img {
+        height: 40px; /* Размер логотипа */
+        cursor: pointer;
+    }
+    .nav-links {
+        display: flex;
+        gap: 20px; /* Расстояние между ссылками */
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .nav-links a:hover {
+        background-color: #007bff;
+        color: white;
+    }
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column; /* На мобильных - столбиком */
+            align-items: flex-start;
+        }
+        .nav-links {
+            margin-top: 10px;
+            padding: 10px 0 0 10px;
+            flex-direction: column;
+            width: 100%;
+        }
+        .nav-links a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    div {
+      font-size: 30px;
+      height: auto;
+      max-height: 500px;
+      overflow: auto;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-left: 30px;
+        padding: 10px;
+    }
+
+    .gradient-box {
+        width: 800px;
+        height: 200px;
+        margin-top: 10px;
+        text-align: center;
+        justify-self: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: linear-gradient(var(--angle, 0deg), red, blue);
+    }
+
+    .animated-text {
+        font-size: 30px;
+        color: blue;
+        animation: textColorChange 3s infinite alternate;
+    }
+
+    @keyframes textColorChange {
+        from {
+            color: blue;
+        }
+        to {
+            color: red;
+        }
+    }
+
+    .animated-background {
+        width: 800px;
+        height: 300px;
+        margin-top: 40px;
+        margin-left: 10px; 
+        background: linear-gradient(to right, red, orange, yellow); /* Начальный градиент */
+        animation: colorChange 4s infinite alternate; /* Анимация, выполняющаяся 4 секунды, зацикленно и в обе стороны */
+    }
+
+    @keyframes colorChange {
+        from {
+            background: linear-gradient(to right, red, orange, yellow);
+        }
+        to {
+            background: linear-gradient(to right, blue, green, purple);
+        }
+    }
+
+    .logo {
+        text-align: center;
+        padding: 25px 15px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        /* Мягкий переход для фона */
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        
+        /* Начальный фон: очень темный розовый оттенок */
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d0015 100%);
+    }
+
+    /* ЭФФЕКТ ПРИ НАВЕДЕНИИ */
+    .logo:hover {
+        /* Яркий акцентный фон: Градиент Розовый -> Пурпурный */
+        background: linear-gradient(135deg, #ff007a 0%, #8e00ff 100%);
+        box-shadow: 0 10px 30px rgba(255, 0, 122, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .logo p {
+        margin-bottom: 15px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #ffffff;
+        transition: all 0.4s ease;
+    }
+
+    /* Изменение текста при наведении */
+    .logo:hover p {
+        color: #ccff00; /* Лимонный контраст на розовом фоне */
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+        letter-spacing: 5px; /* "Раздвигаем" буквы для пущей моды */
+    }
+
+    .logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px; /* Квадрат со скруглением (стиль иконок приложений) */
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        filter: grayscale(100%) brightness(0.8);
+        transition: all 0.5s ease;
+    }
+
+    .logo:hover img {
+        filter: grayscale(0%) brightness(1.1);
+        border-color: #ffffff;
+        transform: scale(1.05) rotate(-3deg);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+  <!-- javascript file to load -->
+  <script src="" defer></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">
+        <p>© OkITSphere</p>
+        <img src="img\2026\logo.jpg" alt="Логотип">
+        <!--  https://i.pinimg.com/originals/35/7a/9e/357a9e87c7da8ae21ef1a8f00e2e25cc.jpg  -->
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="http://localhost:8000/index.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
+        </svg>
+            Главная</a>
+
+        <a href="#" onclick="alert('Это не настоящая страница\nЭто дубликат для демонстрации');"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+        </svg>
+            Персонал</a> <!-- Второе "окошко-ссылка" -->
+
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
+        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5"/>
+        <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85z"/>
+        </svg>
+            Отделы</a> <!-- Третье "окошко-ссылка" -->
+
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+        </svg>
+            Пользователи</a>
+
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+        </svg>
+            Блог</a>
+
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+        <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+        <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
+        </svg>
+            Мини-блог</a>
+
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-shaded" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 14.933a1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/>
+        </svg>
+            admin</a>
+    </nav>
+  </header>
+
+  <h1>Главная страница.</h1>
+
+    <h1 class="animated-text">
+        Добро пожаловать на наш сайт, Вы найдете здесь много интересного!
+   </h1>
+
+  <div class="gradient-box" id="myElement" style="color: white;">
+    Этот сайт — пример возможностей Django: простоты и мощи для создания 
+    современных веб-приложений.
+  </div>
+
+  <div class="animated-background">
+    Мы рады приветствовать вас на сайте, который был разработан с 
+    использованием Python и фреймворка Django, обеспечивая быструю и 
+    надежную работу.   
+  </div><br>
+
+<!-- javascript code -->
+  <script>
+    // javascript code here
+
+    const element = document.getElementById('myElement');
+    let angle = 0;
+
+    function animateGradient() {
+    angle = (angle + 1) % 360; // Изменяем угол на 1 градус каждый раз
+    element.style.setProperty('--angle', angle + 'deg');
+    requestAnimationFrame(animateGradient); // Повторяем анимацию
+    }
+
+    animateGradient();
+
+    // Пример JS: Добавление класса при наведении на ссылку
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('.nav-links a');
+
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.classList.add('hovered');
+            });
+            link.addEventListener('mouseleave', () => {
+                link.classList.remove('hovered');
+            });
+        });
+    });
+    // И соответствующий CSS для класса .hovered
+    /*
+    .nav-links a.hovered {
+        background-color: #0056b3;
+        color: white;
+    }
+    */   
+  </script>
+</body>
+</html>

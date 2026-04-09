@@ -1,0 +1,72 @@
+<style>
+    /* Базовая настройка боковой панели */
+    .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        background-color: #101010; /* Глубокий черный/графит */
+        padding: 20px 0;
+        border-right: 4px solid #ff007a; /* Акцентная розовая полоса сбоку */
+    }
+
+    /* Общий стиль для всех навигационных ссылок */
+    .nav-link {
+        display: block; /* Ссылка на всю ширину для удобства клика */
+        padding: 12px 25px;
+        color: #ffffff !important; /* Белый текст на темном фоне */
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase; /* Модный "скандинавский" стиль */
+        letter-spacing: 1px;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        transform-origin: left center;
+        position: relative;
+    }
+
+    /* Эффект при наведении (Креативный акцент) */
+    .nav-link:hover, .increase:hover {
+        background-color: rgba(211, 78, 78, 0.05);
+        color: hsl(0, 100%, 50%) !important; /* Неоновый лимонно-желтый при наведении */
+        transform: scale(1.1) translateX(10px); /* Увеличение + сдвиг вправо */
+        font-size: 1.2em;
+    }
+
+    /* Тонкая линия-подчеркивание при наведении */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 25px;
+        bottom: 8px;
+        width: 0;
+        height: 2px;
+        background-color: #ff007a; /* Розовый акцент */
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 40px; /* Линия "выезжает" при наведении */
+    }
+
+    /* Стилизация активного пункта (Мода/Креатив) */
+    .nav-link.active {
+        background-color: #ff007a !important; /* Яркий розовый для активного раздела */
+        color: #000 !important; /* Черный текст на розовом фоне для контраста */
+        box-shadow: 0 4px 15px rgba(255, 0, 122, 0.4);
+    }
+
+    /* Убираем стандартные буллиты, если это список <ul> */
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Кастомизация скроллбара для Sidebar (чтобы не портил вид) */
+    .sidebar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+        background: #333;
+    }
+</style>

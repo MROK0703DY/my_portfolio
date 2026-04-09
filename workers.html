@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="This is the basic HTML-5 template needed to start a webpage from scratch. The meta description tag describes what the page is about. Should be over 50 characters and less than around 160 characters. Search engines sometimes this is used to provide a preview snippet.">
+<meta name="keywords" content="basic, html, template">
+<title>{% block title %}Персонал{% endblock %}</title>
+<!-- CSS file to load -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!-- Подключаем стили для боковой панели -->
+{% include 'the_right_server/includes/sidebar_styles.html' %}
+
+<!-- CSS styles -->
+<style>
+    html, body {
+        margin: 0; /* Убираем отступы по умолчанию */
+        padding: 0;
+        height: 100%; /* Важно для html и body, чтобы они занимали всю доступную высоту */
+        width: 100%;
+        box-sizing: border-box; /* Чтобы padding и border не увеличивали размер */
+        box-shadow: 7px 7px 10px 0px rgba(244, 244, 244, 1);
+        text-shadow: #000000 4px 4px 3px;
+    }
+
+    body {
+       min-height: 100vh; /* Основной метод: тело занимает минимум высоту viewport */ 
+       overflow: hidden; /* Скрывает и вертикальный, и горизонтальный скролл */
+    }
+
+    .container {
+        display: flex; /* Используем Flexbox */
+        gap: 20px; /* Отступ между сайдбаром и контентом */
+        padding: 20px;
+    }
+    
+    .sidebar {
+        width: 280px; /* Фиксированная ширина сайдбара */
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        flex-shrink: 0; /* Предотвращает сжатие сайдбара */
+    }
+    
+    .content {
+        flex-grow: 1; /* Основной контент займет все оставшееся место */
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    /* CSS Document */
+    h1, h3 {
+    	font-size: 30px;
+    	text-align: center;
+    	color: red;
+    }
+    
+    nav {
+    	margin: 50px 0;
+    	background-color: #E64A19;
+    }
+
+    nav ul {
+    	padding: 0;
+      margin: 0;
+    	list-style: none;
+    	position: relative;
+    	}
+    	
+    nav ul li {
+    	display:inline-block;
+    	background-color: #E64A19;
+    	}
+    
+    nav a {
+    	display:block;
+    	padding:0 10px;	
+    	color:#FFF;
+    	font-size:20px;
+    	line-height: 60px;
+    	text-decoration:none;
+    }
+    
+    nav a:hover { 
+    	background-color: #000000; 
+    }
+
+    /* Hide Dropdowns by Default */
+    nav ul ul {
+    	display: none;
+    	position: absolute; 
+    	top: 60px; /* the height of the main nav */
+    }
+    	
+    /* Display Dropdowns on Hover */
+    nav ul li:hover > ul {
+    	display:inherit;
+    }
+    	
+    /* Fisrt Tier Dropdown */
+    nav ul ul li {
+    	width:170px;
+    	float:none;
+    	display:list-item;
+    	position: relative;
+    }
+
+    /* Second, Third and more Tiers	*/
+    nav ul ul ul li {
+    	position: relative;
+    	top:-60px; 
+    	left:170px;
+    }
+    	
+    	
+    /* Change this in order to change the Dropdown symbol */
+    li > a:after { content:  ' +'; }
+    li > a:only-child:after { content: ''; }
+    
+    label {
+      background: #F7941E;
+      border: 1px solid white;
+    }
+    
+    label:hover {
+      background: green;
+      color: yellow;
+    }
+
+    .page, .send, .submit {
+    	display:block;
+    	padding:0 80px;	
+    	color:white;
+    	font-size:18px;
+    	line-height: 60px;
+    	text-decoration:none;
+    	border-radius: 30px;
+    	background: #F7941E;
+    	border: 4px solid;
+    	border-color: green rgba(170, 50, 220, .6) red;
+    }
+    
+    .page:hover {
+    	background: green;
+    	color: yellow;
+    }
+    
+    .send {
+    	border-radius: 10px 100px / 120px;;
+    }
+
+    .send:hover {
+    	background: green;
+    	color: yellow;
+    	border-color: red #32a1ce;
+    }
+    
+    p {
+    	font-palette: red;
+    }
+    
+    .submit {
+    	background: #F7941E;
+    	border-radius: 25% 10%;
+    	border-color: red rgba(170, 50, 220, .6) green;
+    }
+
+    .submit:hover {
+    	background: green;
+    	color: yellow;
+    }
+
+    ul{list-style:none}
+      label{display:inline-block; width:200px; height:40px; text-align:center; color:#000; font: 16px/40px Arial; font-weight:bold; border-top-left-radius: 20px; border-bottom-right-radius: 20px; cursor: pointer;}
+      input:checked~label{background:red; color:#fff}
+      input[type="radio"]{
+          display:none
+      }
+      
+      div {
+      font-size: 30px;
+      height: auto;
+      max-height: 500px;
+      overflow: auto;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-left: 30px;
+        padding: 10px;
+    }
+
+    .gradient-box {
+        width: 1200px;
+        height: 100vh;
+        margin-top: 10px;
+        text-align: center;
+        justify-self: center;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background: linear-gradient(var(--angle, 0deg), red, blue);
+    }
+
+    .animated-text {
+        font-size: 30px;
+        color: blue;
+        animation: textColorChange 3s infinite alternate;
+    }
+
+    @keyframes textColorChange {
+        from {
+            color: blue;
+        }
+        to {
+            color: red;
+        }
+    }
+
+    .animated-background {
+        width: 800px;
+        height: 300px;
+        margin-top: 40px;
+        margin-left: 10px; 
+        background: linear-gradient(to right, red, orange, yellow); /* Начальный градиент */
+        animation: colorChange 4s infinite alternate; /* Анимация, выполняющаяся 4 секунды, зацикленно и в обе стороны */
+    }
+
+    @keyframes colorChange {
+        from {
+            background: linear-gradient(to right, red, orange, yellow);
+        }
+        to {
+            background: linear-gradient(to right, blue, green, purple);
+        }
+    }
+
+    .logo {
+        transform: translateX(-10px); /* Сдвиг влево */
+    }
+
+    .logo p {
+        font-size: 20px;
+        color: red;
+    }
+    
+    h1, h3 {
+        	font-size: 30px;
+        	text-align: center;
+        	color: red;
+        }
+            
+    footer {
+          margin-top: -10px;
+          /*Минус Высота футера*/
+          height: 100px;
+          /*Высота футера*/
+        }
+</style>
+
+  <!-- javascript file to load -->
+  <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            {% include 'the_right_server/includes/sidebar.html' %}
+        </aside>
+        <main class="content">
+             <h1 style="color: red; ">{% block h1 %}Персонал{% endblock %}</h1>
+            
+              <div class="gradient-box" id="myElement" style="color: white;">
+                <h3>Список сотрудников ООО "Клуб программистов"</h3>
+            
+                  {%for i in data%}
+                  <h5>Сотрудник {{forloop.counter}}</h5>
+                  Фамилия: {{i.second_name}}<br> 
+                  Имя: {{i.name}}<br>
+                  E-mail: {{i.email}}<br>
+                  Зарплата: 
+                  
+                  {%if i.salary > 60000%}
+                    <span style="color: red;">{{i.salary}}</span><br>
+                  {%else%}
+                    <span style="color: yellow;">{{i.salary}}</span><br>
+                  {%endif%}
+                  <br>
+                  Отдел: {{i.department.title}}
+                  <br>
+                    
+                  {%endfor%}
+
+              </div>
+        </main>
+    </div>
+
+  <footer>
+    <p style="color: red;">&copy; OkITSphere 2026</p>
+  </footer>
+  <script>
+      function redirectToPage(radio) {
+        if (radio.checked) {
+            // Перенаправляем на новую страницу
+            window.location.href = radio.value;
+            // Или открываем в новой вкладке: window.open(radio.value, '_blank');
+        }
+    }
+  </script>
+
+</body>
+</html>

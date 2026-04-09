@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="This is the basic HTML-5 template needed to start a webpage from scratch. The meta description tag describes what the page is about. Should be over 50 characters and less than around 160 characters. Search engines sometimes this is used to provide a preview snippet.">
+        <meta name="keywords" content="basic, html, template">
+        <title>Simple Blod</title>
+        <!-- CSS file to load -->
+        <link rel="stylesheet" href="css/sidebar_styles.css">
+
+        <!-- CSS styles -->
+        <style>
+            img {
+                width: 300px;
+                height: auto;
+            }
+            
+            .page-layout {
+                display: flex;
+                min-height: 100vh;
+            }
+            
+            sidebar {
+                flex: 0 0 280px;
+                background-color: #101010;
+                border-right: 4px solid #ff007a;
+                overflow-y: auto;
+            }
+            
+            main {
+                flex: 1;
+                padding: 20px;
+                background-color: #f8f9fa;
+            }
+            
+            .ad-sidebar {
+                flex: 0 0 300px;
+                background-color: #fff;
+                border-left: 1px solid #ddd;
+                padding: 20px;
+                overflow-y: auto;
+            }
+            
+            /* Дополнительные стили для рекламных блоков */
+            .ad-item img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+            
+            .ad-item p {
+                margin: 0;
+            }
+            
+            .ad-free-container {
+                background-color: #e8f4fd;
+                border: 1px solid #007bff;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .ad-free-container:hover {
+                background-color: yellow;
+                color: red;
+                transform: scale(1.05);
+            }
+            
+            .ad-item {
+                background-color: #e8f4fd;
+                border: 1px solid #007bff;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .ad-btn {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 2px solid #007bff;
+                border-radius: 5px;
+                cursor: pointer;
+                position: relative;
+            }
+            
+            .day-pass {
+                background-color: #e9ecef;
+            }
+            
+            .month-pass {
+                background-color: #4361ee;
+                color: white;
+            }
+            
+            /* Бейдж "Выгодно" на рамке кнопки */
+            .badge {
+                position: absolute;
+                top: -10px;
+                right: 10px;
+                background-color: #ff4757;
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 3px 8px;
+                border-radius: 12px;
+                border: 2px solid white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            
+            /* Стили для ссылок в рекламных блоках */
+            .ad-item p a {
+                color: #007BFF;
+                border: 1px solid #007BFF;
+                border-radius: 4px;
+                padding: 4px 8px;
+                text-decoration: none;
+                display: inline-block;
+            }
+            
+            .ad-item p a:hover {
+                background-color: #007BFF;
+                color: white;
+            }
+            
+            /* Hover эффекты для рекламных элементов */
+            .ad-free-header:hover,
+            .ad-btn:hover,
+            #colorH3:hover {
+                background-color: yellow !important;
+                color: red !important;
+                transform: scale(1.05);
+                transition: all 0.3s ease;
+            }
+            
+            /* Чтобы трансформация работала, нужно задать transform-origin */
+            .ad-free-header,
+            .ad-btn,
+            #colorH3 {
+                transition: all 0.3s ease;
+                background: none;
+            }
+
+            /* Обтекание картинки текстом */
+            .content-container {
+                overflow: hidden; /* Содержит float */
+                margin-bottom: 30px;
+            }
+
+            .content-container .img {
+                float: left;
+                margin-right: 30px;
+                margin-bottom: 20px;
+                margin-top: 0;
+            }
+
+            .content-container .img img {
+                width: 250px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            }
+
+            .content-container .content {
+                overflow: hidden; /* Создаёт новый блоковый контекст, чтобы текст обтекал */
+            }
+
+            .content-container .content h1 {
+                margin-top: 0;
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+
+            .content-container .content p {
+                line-height: 1.6;
+                text-align: left;
+            }
+
+            /* Тёмная тема */
+            .page-layout.dark-theme {
+                background-color: #6a0dad; /* фиолетовый */
+                color: #ffff00; /* жёлтый */
+            }
+
+            .page-layout.dark-theme main {
+                background-color: #6a0dad;
+                color: #ffff00;
+            }
+
+            .page-layout.dark-theme sidebar {
+                background-color: #4b0082; /* более тёмный фиолетовый */
+                color: #ffff00;
+            }
+
+            .page-layout.dark-theme .ad-sidebar {
+                background-color: #4b0082;
+                color: #ffff00;
+            }
+
+            .page-layout.dark-theme .ad-item,
+            .page-layout.dark-theme .ad-free-container {
+                background-color: #5a189a;
+                color: #ffff00;
+                border-color: #ffff00;
+            }
+
+            .page-layout.dark-theme .ad-btn {
+                background-color: #7b2cbf;
+                color: #ffff00;
+                border-color: #ffff00;
+            }
+
+            .page-layout.dark-theme .content-container .content h1,
+            .page-layout.dark-theme .content-container .content p {
+                color: #ffff00;
+            }
+
+            .page-layout.dark-theme .nav-link {
+                color: #ffff00 !important;
+            }
+
+            .page-layout.dark-theme .nav-link:hover {
+                color: #ffcc00 !important;
+            }
+
+            .page-layout.dark-theme sidebar .bg-dark {
+                background-color: #4b0082 !important;
+                color: #ffff00;
+            }
+
+            /* Стили для элемента "сюрприз" */
+            .surprise-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 4rem;
+                font-weight: bold;
+                z-index: 9999;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.5s ease, visibility 0.5s ease;
+            }
+
+            .surprise-overlay.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .surprise-text {
+                text-align: center;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="page-layout">
+            <sidebar>
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
+                <a href="http://127.0.0.1:8000" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <i class="bi bi-bootstrap-fill me-2" style="font-size: 2rem;"></i>
+                    <span class="fs-4 increase" style="font-weight: bold; font-size: 1.5rem; color: blue;">Мой Проект</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item increase">
+                        <a href="http://127.0.0.1:8000" class="nav-link text-white {% if request.path == '/' or request.path == '/the_right_server/' %}active{% endif %}" aria-current="page">
+                            <i class="bi bi-house-door me-2"></i> Главная
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="dark-theme-btn" class="nav-link text-white {% if 'workers' in request.path %}active{% endif %}">
+                            <i class="bi bi-speedometer2 me-2"></i> Темная тема
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="surprise-btn" class="nav-link text-white {% if 'departments' in request.path %}active{% endif %}">
+                            <i class="bi bi-table me-2"></i> Сюрприз
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/dropdown_menu.html" class="nav-link text-white {% if 'users' in request.path %}active{% endif %}">
+                            <i class="bi bi-grid me-2"></i> Выпадающее меню
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://demoqa.com/dynamic-properties" class="nav-link text-white {% if 'posts' in request.path %}active{% endif %}">
+                            <i class="bi bi-person-circle me-2"></i> Тренировочный сайт для Selenium</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000/neon_button.html" class="nav-link text-white {% if 'mini' in request.path %}active{% endif %}">
+                            <i class="bi bi-graph-up me-2"></i> Неоновая кнопка
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.1:8000" class="nav-link text-white {% if 'admin' in request.path %}active{% endif %}">
+                            <i class="bi bi-gear me-2"></i> Админ
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div>
+                    <li><a class="dropdown-item" href="http://127.0.0.1:8000">Выйти</a></li>
+                </div>
+            </div>
+            </sidebar>
+
+            <main>
+                <div class="ad-free-header">
+                    <h1>Благодарим за посещение нашего сайта</h1>
+                    <p>Надеемся, что Вас ожидает приятный контент</p>
+                </div><br>
+
+                <div class="content-container">
+                    <div class="img">
+                        <img src="img/2026/Tyan.jpg" alt="Изображение">
+                    </div>
+
+                    <div class="content">
+                        <h1>Китайская актриса и блогер Фэйя Цзоу: "Я выросла на Перерве"</h1>
+                        <p>02 Март 2026 г. | Автор: Настя Ли</p>
+                        <p>
+                            Актриса, модель и блогер Фэйя Цзоу родилась и живёт в Москве. Она снимается в кино и рекламе, записывает развлекательно-познавательные ролики для подписчиков в соцсетях. В Tik Tok у Фэйи больше миллиона подписчиков. А кинозрители её знают по фильмам «Фитнес-5», «Четвёртая смена», «Любовь пояпонски».
+
+Конфеты с мясом
+
+— Фэйя, на вашей на страничке в Тik Tok сказано, что вы «самая русская китаянка». Как так получилось?
+
+— Я родилась в России. Родители приехали сюда в конце 1980-х годов, чтобы заниматься бизнесом. Позже получили российское гражданство. Я выросла и до недавнего времени жила в районе Марьино на улице Перерве.
+
+— Как учились в школе?
+
+— Школа была обычная, рядом с домом. Сначала было сложно учиться. Но уже со 2-го класса я стала отличницей, и мама очень любила ходить на родительские собрания, потому что меня постоянно хвалили.
+
+— У вас были друзья?
+
+— Конечно, были, и все русские. Помню, мы постоянно тусовались во дворе, и мама мне кричала в окно: «Соня, иди обедать!» Она так меня звала: ей нравилось имя София, и ей, видимо, казалось, что это лучше для общения с друзьями.
+
+— Как ребята относились к тому, что вы иностранка?
+
+— Одноклассники иногда дразнили узкоглазой, но сейчас я вспоминаю это с улыбкой, это было не со зла. Однажды я принесла в школу своё любимое лакомство — сушёное мясо, упакованное как конфета. Раздала одноклассникам, они положили в рот и… стали выплёвывать и говорить: «Что за гадость такая!» Меня это расстроило, конечно. Ведь я их предупреждала, что это не сладкая конфета, а они не услышали.
+
+Плакали вместе с Шукшиной
+
+— Как родители отнеслись к вашему желанию стать актрисой?
+
+— Они не сразу это приняли, хотя я постоянно пою, танцую, с подругами придумываю разные концерты и люблю выступать перед гостями. Когда время пришло поступать в университет, мама посоветовала мне выбрать профессию дипломата или заняться бизнесом. Я не хотела спорить и пошла учиться на социолога в Московский городской педагогический университет. Проучилась там три года, параллельно занимаясь в театральном кружке. В результате я ушла из университета и поступила в ГИТИС на факультет эстрады, причём на бюджет. Мама была приятно удивлена и сказала, что сдаётся.
+
+— Вы снимались в фильме «Любовь пояпонски» с актрисой Марией Шукшиной. Какие впечатления о съёмках?
+
+— Мария — потрясающая женщина: искромётная, дружелюбная, улыбчивая. Она нас постоянно угощала вкусняшками, которые сама готовила. Однажды она дала мне мастер-класс, который я никогда не забуду. У нас с ней была сложная эмоциональная сцена. Моя героиня должна была расплакаться, а у меня не получалось. Мария сказала, чтобы я не расстраивалась, она мне поможет. Она, не отрываясь, смотрела мне в глаза, и у неё стали наворачиваться слёзы. Её состояние передалось мне, и я смогла расплакаться в кадре. Это высший актёрский пилотаж.
+
+Холодное вредно для организма
+
+— Ваши бытовые и кулинарные привычки больше китайские или русские?
+
+— Всё-таки больше китайские. Например, я не люблю холодную пищу, как и большинство китайцев. С ужасом смотрю, как в России актрисы и модели могут целый день есть салатики, запивать апельсиновым фрешем. Я так не могу. Китайская медицина говорит о том, что холодная пища вредна для организма. Также я, в отличие от моих русских друзей, люблю вставать рано утром и делаю это легко, без будильника.
+
+— Говорят, китайцы любят пить чай. Вы тоже?
+
+— Не все китайцы любят чай. Я, например, вместо чая пью тёплую или горячую воду. Но если китайцы пьют чай, то с молоком — баблти, — это особенно популярно у молодёжи. Наверное, этот стереотип появился, потому что действительно у каждого уважающего себя китайского босса есть чайный набор для встречи клиентов. Кстати, на моей родине вообще нет чайных пакетиков: если и пьют чай, то заваривают листья.
+
+— Как отличаются русские и китайцы по характеру?
+
+— Мне многие люди говорят, что я искренняя, прямодушная и откровенная, как будто русская. А китайцы сложные по характеру. Никогда не поймёшь, о чём они думают. На лице всегда будет дружелюбие, но не факт, что это правда.
+
+Участвовала в реалити-шоу
+
+— В прошлом году вы участвовали в реалити-шоу «Мистер Х» на канале «Пятница». Вы действительно искали свою любовь?
+
+— Действительно. На тот момент у меня не было любимого человека. Я думала, что на этом шоу каждая девушка найдёт свою любовь, а оказалось, что все девушки сражаются за одного мужчину — миллионера. Это оказалось эмоционально сложно для меня. Смысл шоу был в том, чтобы выяснить, что важнее для современных девушек: любовь или корысть. Для меня участие в проекте было коротким. Уже в третьем выпуске в ресторане на свидании главного героя со мной и другими девушками случилось непредвиденное. Вдруг с огромным букетом роз появился мой друг Влад. Это было так неожиданно, что я даже расплакалась. До этого наши отношения были дружескими, но, оказалось, только с моей стороны. Он признался мне в любви прямо на камеру, тронул меня до глубины души, и мы вместе ушли с проекта. Досматривала я проект уже по телевизору. В конце оказалось, что тот парень только изображал богача. Но для меня это было уже не важно.
+
+Как выбирают мужа в Поднебесной
+
+— Китаянки при выборе спутника жизни обращают внимание на его материальное положение?
+
+— Ещё как! В Китае если у мужчины нет денег, квартиры и машины, то он может даже не мечтать о девушке и о создании семьи. Может быть, просто потому, что у нас парней больше, чем девушек.
+
+— В каком возрасте типичные китайские родители считают, что девушка что-то засиделась, пора бы замуж?
+
+— У нас считается, что до 30 лет девушка уже должна выйти замуж. Но при этом до 21-22 лет молодёжь не очень думает о женитьбе и старательно учится. Родители создают все условия для этого: ведут хозяйство, сами готовят, убирают.
+
+— Вам уже 31 год. Мама не торопит?
+
+— Мы с мамой нетипичные китайцы. Я благодарна ей за её мудрость. Когда ей звонят подруги и говорят, что неприлично, что её дочка ещё не замужем, она отвечает, что это мой выбор, главное — чтобы я была счастлива.
+
+— У вас есть актёрские планы на ближайшие месяцы?
+
+— Да! В мае начнутся съёмки полнометражного российско-китайского фильма, в котором я буду играть главную роль. Пока могу сказать только, что он будет о сотрудничестве России и Китая.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-container">
+                    <div class="img">
+                        <img src="img/2026/Lsy.jpg" alt="Изображение">
+                    </div>
+
+                    <div class="content">
+                        <h1>Чжао Лусы</h1>
+                        <p>28 Март 2026 г. | Автор: Лиана Цветочная</p>
+                        <p>
+                            Напомню вам, чем больше популярность актера, тем больше у него и фанатов, и, к сожалению, хэйтеров. Не стоит сильно сокрушаться по этому поводу.
+
+Хочу поговорить еще раз на одну тему. Я уже не раз с этим сталкивалась.
+Вчера одна из келули мне сообщила о том, что в одной группе перевода здесь, в ВК, были опубликованы «новости» о Чжао Лу Сы в хэйтерском стиле. И в комментариях, конечно же, нашлись злыдни, которые, видимо, только и ждали этого момента, чтобы захэйтить нашу девочку по полной. Возможно, она хотела, чтобы я влезла в эту чистой воды провокацию. 😃
+Но я проговорю свою позицию, я никогда не влезаю в такие споры. Потому что я слишком умная и мудрая. 😃 У меня нет ни лишнего времени, ни лишней энергии питать хэйтеров-вампиров. Люди, которые пишут гадости про других (особенно про нашу светлую, чистую, добрейшую, щедрейшую девочку), это нездоровые люди, им прямая дорога к психиатру. Истощать столько негатива к человеку, которого ты даже не знаешь толком и который лично тебя никогда в жизни не обижал, — это просто клиника!
+Спорить с такими — значит уподобиться им. Спасибо, но мне не надо такого «счастья».
+Поверьте, доброжелателей и фанатов Лу Сы гораздо больше. Лучше давайте общаться с ними.
+Вот вы когда видите грязного, пьяного бомжика, который очень хочет с вами поругаться, вы же не лезите в разборки с ним, вы же бежите от него куда подальше, вот здесь делаем то же самое 😁. Не пачкаемся. Конечно же, если вам хочется поучаствовать в споре, то это ваш выбор, но послевкусие останется ужасным, и понадобятся успокоительные, поверьте, мы все это проходили.
+
+Еще я ни разу здесь не проговаривала еще один момент, это то, что одними из самых больших хейтеров Лу Сы являются фанаты актрисы Юй Шу Синь, я не знаю почему , это началось задолго до эры моего правления 😀 (вчерашний случай был связан с ними ). Это особенно ярко прослеживается на китайских площадках. Те, кто давно следят за творчеством актрисы, возможно, в курсе этого. Я сейчас никого не призываю хэйтить другую актрису в ответ. Сама Лу Сы за те полтора года, которые я веду фандом, ни разу ни одного слова про неё не сказала. И большинство китайских келули не говорят об этом. Поэтому я и здесь не говорила об этом, честно, это было слишком незначительно для меня. Но тем не менее я решила хоть раз вам об этом сказать, просто для информации.
+И вообще я уже прописывала правила этой группы: мы никого не хэйтим здесь вообще, мы просто радуемся обновлениям Чжао Лу Сы и всё.
+Если кто нарушит правило, я минимум удаляю комментарий или заношу в чёрный список.
+
+В связи со вчерашними событиями хочу еще раз проговорить важный момент: пожалуйста, дорогие фанаты и доброжелатели актрисы Чжао Лу Сы, не верьте новостям в других источниках. Да, я смело скажу вам еще раз: верьте только тому, что написано в фандоме актера, не верьте другим источникам.
+К сожалению, есть общая тенденция — это верить всему, что вы прочитали. Честное слово, как малые дети, как можно быть такими доверчивыми?
+Именно в нашем фандоме мы публикуем самые свежие и правдивые новости и ничего от вас не утаиваем и обо всем вам рассказываем. Поэтому для вас нет необходимости узнавать и верить другим источникам касательно обновлений Чжао Лу Сы. Если у вас есть сомнения, просто пишите мне в личку или под любым постом последним в комментариях, и мы ответим.
+Напомню вам, чем больше популярность актера, тем больше у него и фанатов, и, к сожалению, хэйтеров. Не стоит сильно сокрушаться по этому поводу. Берегите себя!
+                        </p>
+                    </div>
+            </main>
+
+            <!-- Рекламная панель справа -->
+            <aside class="ad-sidebar">
+                <h3 id="colorH3">Реклама</h3>
+
+                <div class="ad-free-container">
+                    <div class="ad-free-header">
+                        <span class="icon">⚡</span>
+                        <h3>Чтение без границ</h3>
+                        <p>Отключите рекламу и ускорьте загрузку сайта</p>
+                        <p>Пожалуйста, не изменяйте сумму в окне оплаты, иначе доступ не активируется автоматически.</p>
+                    </div>
+                    
+                    <div class="ad-free-options">
+                        <!-- Вариант на Сутки -->
+                        <button class="ad-btn day-pass">
+                            <span class="btn-label">На сутки</span>
+                            <span class="btn-price">19 ₽</span>
+                        </button>
+
+                        <!-- Вариант на Месяц (Акцентный) -->
+                        <button class="ad-btn month-pass">
+                            <div class="badge">Выгодно</div>
+                            <span class="btn-label">На месяц</span>
+                            <span class="btn-price">149 ₽</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="ad-item first-ad">
+                    <img src="img/2026/gg55.jpg" alt="Реклама">
+                    <p><a href="javascript:void(0)" target="_blank" rel="noopener noreferrer" onclick="return false;">ChatGPT 5 на русском языке без VPN!</a></p>
+                </div>
+
+                <div class="ad-item two-ad">
+                    <img src="img/2026/g5.jpg" alt="Реклама">
+                    <p><a href="javascript:void(0)" target="_blank" rel="noopener noreferrer" onclick="return false;">AVALAVA</a></p>
+                </div>
+
+                <div class="ad-item three-ad">
+                    <img src="img/2026/5g.jpg" alt="Реклама">
+                    <p><a href="javascript:void(0)" target="_blank" rel="noopener noreferrer" onclick="return false;">SpellBookGPT</a></p>
+                </div>
+
+                <div class="ad-item four-ad">
+                    <img src="img/2026/ggg55.jpg" alt="Реклама">
+                    <p><a href="javascript:void(0)" target="_blank" rel="noopener noreferrer" onclick="return false;">Siberian Wellness</a></p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Overlay для сюрприза -->
+        <div class="surprise-overlay" id="surpriseOverlay">
+            <div class="surprise-text">Uppsss.....</div>
+        </div>
+
+        <!-- javascript file to load -->
+        <script src="js/sample.js"></script>
+
+        <!-- javascript code -->
+        <script>
+        // Переключение тёмной темы
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkThemeBtn = document.getElementById('dark-theme-btn');
+            const pageLayout = document.querySelector('.page-layout');
+            
+            if (darkThemeBtn && pageLayout) {
+                darkThemeBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    pageLayout.classList.toggle('dark-theme');
+                    
+                    // Меняем текст кнопки для индикации
+                    const icon = this.querySelector('i');
+                    if (pageLayout.classList.contains('dark-theme')) {
+                        icon.className = 'bi bi-sun me-2';
+                        this.querySelector('.nav-link-text').textContent = 'Светлая тема';
+                    } else {
+                        icon.className = 'bi bi-speedometer2 me-2';
+                        this.querySelector('.nav-link-text').textContent = 'Темная тема';
+                    }
+                });
+            }
+
+            // Обработчик для кнопки "Сюрприз"
+            const surpriseBtn = document.getElementById('surprise-btn');
+            if (surpriseBtn) {
+                surpriseBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const overlay = document.getElementById('surpriseOverlay');
+                    overlay.classList.add('show');
+                    
+                    // Автоматически скрыть через 3 секунды
+                    setTimeout(() => {
+                        overlay.classList.remove('show');
+                    }, 3000);
+                });
+            }
+        });
+        </script>
+    </body>
+</html>

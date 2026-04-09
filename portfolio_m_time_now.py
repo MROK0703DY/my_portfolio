@@ -10,7 +10,7 @@ print()
 today = date.today()
 # Используем формат %d-%m-%Y для обратного порядка
 reversed_date = today.strftime("%d-%m-%Y")
-print(f"Только сегодняшняя дата: {reversed_date}")
+print(f"Текущая дата: {reversed_date}")
 
 print()
 print(f"Только сегодняшняя дата: {today}")  # Выведет: 2025-12-07
