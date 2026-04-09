@@ -4,8 +4,8 @@
     }
 
 .dev-card {
-        width: 320px;
-        margin: 0 auto; /* 0 сверху/снизу, auto по бокам */
+        width: 640px;
+        margin-left: 90px;
         padding: 24px;
         background: blue;
         backdrop-filter: blur(12px);
@@ -15,6 +15,7 @@
         font-family: 'Inter', sans-serif;
         transition: all 0.3s ease;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
     }
 
 .dev-card:hover {
@@ -79,4 +80,8 @@
 
 .contact-btn:hover {
         opacity: 0.9;
+    }
+
+.card-header {
+        text-align: center;
     }

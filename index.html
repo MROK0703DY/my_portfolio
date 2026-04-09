@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мое Портфолио | Разработчик</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vidget.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -41,22 +42,22 @@
                     <a href="#contact" class="btn btn-secondary">Связаться</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="code-animation">
-                    <pre><code class="language-javascript">
-function разработчик() {
-    const навыки = ['JavaScript', 'React', 'Node.js', 'Python'];
-    const проекты = 15;
-    const опыт = '3+ года';
-    
-    return {
-        специализация: 'Full-stack',
-        технологии: навыки,
-        завершенные Проекты: проекты,
-        опыт Работы: опыт
-    };
-}
-                    </code></pre>
+            <div class="dev-card">
+                <div class="card-header">
+                    <div class="badge"> {% extends 'main/layout.html' %}</div><br>
+
+                    <div class="badge">
+                    {%block content%}
+                        <h2>Главная страница</h2>
+                        <p>Содержание</p>
+                    {% endblock %}
+                    </div><br>
+
+                    <div class="badge">{% include 'includes/header.html' %}</div><br>
+
+                    <div id="include" class="badge"></div><br>
+
+                    <button id="neon" class="contact-btn">Добавить новый текст</button>
                 </div>
             </div>
         </div>
@@ -223,10 +224,10 @@ function разработчик() {
                     </div>
                 </div>
                 <form class="contact-form">
-                    <input type="text" placeholder="Ваше имя" required>
-                    <input type="email" placeholder="Ваш email" required>
-                    <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Отправить сообщение</button>
+                    <input id="name" type="text" placeholder="Ваше имя" name="name" autocomplete="given-name" required>
+                    <input id="email" type="email" placeholder="Ваш email" name="email" autocomplete="email" required>
+                    <textarea id="message" placeholder="Ваше сообщение" rows="5" name="message" required></textarea>
+                    <button id="submit" type="submit" class="btn btn-primary">Отправить сообщение</button>
                 </form>
             </div>
         </div>
@@ -236,6 +237,12 @@ function разработчик() {
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <div id="div-footer" class="container-two">
+                <p class="footer-an">© OkITSphere!</p>
+                    <a class="footer-logo">
+                      <img src="https://i.pinimg.com/originals/35/7a/9e/357a9e87c7da8ae21ef1a8f00e2e25cc.jpg" width="100px" height="50px" alt="Логотип портала FlashNews!">
+                    </a>
+                </div>
                 <div class="footer-logo">Портфолио</div>
                 <p class="footer-text">© 2024 Игорь Дубровин. Все права защищены.</p>
                 <div class="social-links">
@@ -253,6 +260,14 @@ function разработчик() {
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <script>
+       document.getElementById('neon').addEventListener('click', function() {
+            const element = document.getElementById('include');
+            if (element) {
+                element.textContent = 'Привет, это новый текст!';
+            }
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
