@@ -1,6 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 <meta charset="utf-8">
@@ -8,12 +7,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="This is the basic HTML-5 template needed to start a webpage from scratch. The meta description tag describes what the page is about. Should be over 50 characters and less than around 160 characters. Search engines sometimes this is used to provide a preview snippet.">
 <meta name="keywords" content="basic, html, template">
-<title>{% block title %}Персонал{% endblock %}</title>
+<title>Контроль данных</title>
 <!-- CSS file to load -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<!-- Подключаем стили для боковой панели -->
-{% include 'the_right_server/includes/sidebar_styles.html' %}
 
 <!-- CSS styles -->
 <style>
@@ -264,38 +261,21 @@
 </style>
 
   <!-- javascript file to load -->
-  <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="" defer></script>
 </head>
 
 <body>
     <div class="container">
-        <aside class="sidebar">
-            {% include 'the_right_server/includes/sidebar.html' %}
-        </aside>
+        <aside class="sidebar"></aside>
+        
         <main class="content">
-             <h1 style="color: red; ">{% block h1 %}Персонал{% endblock %}</h1>
+             <h1 style="color: red; ">Переданные данные</h1>
             
               <div class="gradient-box" id="myElement" style="color: white;">
-                <h3>Список сотрудников ООО "Клуб программистов"</h3>
-            
-                  {%for i in data%}
-                  <h5>Сотрудник {{forloop.counter}}</h5>
-                  Фамилия: {{i.second_name}}<br> 
-                  Имя: {{i.name}}<br>
-                  E-mail: {{i.email}}<br>
-                  Зарплата: 
-                  
-                  {%if i.salary > 60000%}
-                    <span style="color: red;">{{i.salary}}</span><br>
-                  {%else%}
-                    <span style="color: yellow;">{{i.salary}}</span><br>
-                  {%endif%}
-                  <br>
-                  Отдел: {{i.department.title}}
-                  <br>
-                    
-                  {%endfor%}
+                <h3>Здесь будет вставка"</h3>
 
+                    <!-- <div class="insert"> data </div> -->
+                     
               </div>
         </main>
     </div>
