@@ -276,14 +276,14 @@
         <div class="page-layout">
             <sidebar>
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
-                <a href="http://127.0.0.1:8000" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <a href="http://127.0.0.1:5500" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <i class="bi bi-bootstrap-fill me-2" style="font-size: 2rem;"></i>
                     <span class="fs-4 increase" style="font-weight: bold; font-size: 1.5rem; color: blue;">Мой Проект</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item increase">
-                        <a href="http://127.0.0.1:8000" class="nav-link text-white {% if request.path == '/' or request.path == '/the_right_server/' %}active{% endif %}" aria-current="page">
+                        <a href="http://127.0.0.1:5500" class="nav-link text-white {% if request.path == '/' or request.path == '/the_right_server/' %}active{% endif %}" aria-current="page">
                             <i class="bi bi-house-door me-2"></i> Главная
                         </a>
                     </li>
@@ -298,7 +298,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1:8000/dropdown_menu.html" class="nav-link text-white {% if 'users' in request.path %}active{% endif %}">
+                        <a href="http://127.0.0.1:5500/dropdown_menu.html" class="nav-link text-white {% if 'users' in request.path %}active{% endif %}">
                             <i class="bi bi-grid me-2"></i> Выпадающее меню
                         </a>
                     </li>
@@ -308,19 +308,19 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1:8000/neon_button.html" class="nav-link text-white {% if 'mini' in request.path %}active{% endif %}">
+                        <a href="http://127.0.0.1:5500/neon_button.html" class="nav-link text-white {% if 'mini' in request.path %}active{% endif %}">
                             <i class="bi bi-graph-up me-2"></i> Неоновая кнопка
                         </a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1:8000" class="nav-link text-white {% if 'admin' in request.path %}active{% endif %}">
+                        <a href="http://127.0.0.1:5500" class="nav-link text-white {% if 'admin' in request.path %}active{% endif %}">
                             <i class="bi bi-gear me-2"></i> Админ
                         </a>
                     </li>
                 </ul>
                 <hr>
                 <div>
-                    <li><a class="dropdown-item" href="http://127.0.0.1:8000">Выйти</a></li>
+                    <li><a class="dropdown-item" href="http://127.0.0.1:5500">Выйти</a></li>
                 </div>
             </div>
             </sidebar>
