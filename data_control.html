@@ -37,7 +37,7 @@
     
     .sidebar {
         width: 280px; /* Фиксированная ширина сайдбара */
-        background-color: #f4f4f4;
+        background-color: #2c3e50;
         padding: 15px;
         border-radius: 8px;
         flex-shrink: 0; /* Предотвращает сжатие сайдбара */
@@ -266,7 +266,18 @@
 
 <body>
     <div class="container">
-        <aside class="sidebar"></aside>
+        <aside class="sidebar">
+            <!-- Сайдбар -->
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Меню</h3>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">🏠 На главную </a></li><br>
+                    <li><a href="sample.html">📊 Блог sample</a></li>
+                </ul>
+            </nav>
+        </aside>
         
         <main class="content">
              <h1 style="color: red; ">Переданные данные</h1>
@@ -274,7 +285,33 @@
               <div class="gradient-box" id="myElement" style="color: white;">
                 <h3>Здесь будет вставка"</h3>
 
-                    <!-- <div class="insert"> data </div> -->
+                  <div class="insert">
+                      <p>Hello,</p>
+
+                        <p>A new form has been submitted on your website. Details below.</p>
+
+
+                        <p>Name</p>
+                        <p>Иван</p>
+                        <p>Email
+                        hunguzzz03ich@gmail.com</p>
+                        <p>Message
+                        Сообщение от Ивана</p>
+                  </div>
+
+                  <div class="insert">
+                      <p>Здравствуйте,</p>
+
+                        <p>На вашем веб-сайте была размещена новая форма. Подробности ниже.</p>
+
+
+                        <p>Имя</p>
+                        <p>Иван</p>
+                        <p>Электронная почта
+                        hunguzzz03ich@gmail.com</p>
+                        <p>Сообщение</p>
+                        <p>Сообщение от Ивана</p>
+                  </div>
                      
               </div>
         </main>
