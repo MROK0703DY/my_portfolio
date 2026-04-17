@@ -83,10 +83,15 @@ function initSmoothScroll() {
 
   links.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault();
-
       const targetId = this.getAttribute("href");
       if (targetId === "#") return;
+
+      // Если targetId не начинается с '#', это не якорная ссылка, разрешаем стандартное поведение
+      if (!targetId.startsWith("#")) {
+        return;
+      }
+
+      e.preventDefault();
 
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
