@@ -1,90 +1,27 @@
-# Конфигурация GitLab CI/CD для развертывания статического сайта на GitLab Pages
-# Проект: Портфолио-сайт (HTML/CSS/JS)
-
-# Используем легковесный образ Alpine для копирования файлов
-image: alpine:latest
-
-# Кэширование не требуется для статического сайта
-
 stages:
-  - test
   - deploy
 
-# Проверка HTML с помощью html5validator (опционально)
-lint:
-  stage: test
-  script:
-    - apk add --no-cache python3 py3-pip
-    - pip3 install html5validator
-    - html5validator --root . --ignore "*.py" --ignore "*.json" --ignore "*.txt" --ignore "*.md" || echo "HTML validation completed (warnings ignored)"
-  allow_failure: true
-  only:
-    - main
-    - master
-
-# Проверка ссылок (опционально)
-check_links:
-  stage: test
-  script:
-    - apk add --no-cache curl
-    - echo "Link checking can be added here"
-  allow_failure: true
-  only:
-    - main
-    - master
-
-# Развертывание на GitLab Pages
 pages:
   stage: deploy
   script:
-    - echo "Deploying static site to GitLab Pages..."
-    - mkdir -p public
-    # Копируем все файлы и папки в public, кроме скрытых и ненужных
-    - cp -r *.html public/ 2>/dev/null || true
-    - cp -r css public/ 2>/dev/null || true
-    - cp -r js public/ 2>/dev/null || true
-    - cp -r img public/ 2>/dev/null || true
-    - cp config.json public/ 2>/dev/null || true
-    # Удаляем ненужные файлы из public (если нужно)
-    - rm -f public/.gitlab-ci.yml 2>/dev/null || true
-    - rm -f public/portfolio_m_time_now.py 2>/dev/null || true
-    - rm -f public/temp.txt 2>/dev/null || true
-    - echo "Deployment completed."
+    - echo "Cleaning up public folder..."
+    - if (Test-Path public) { Remove-Item -Recurse -Force public }
+    - New-Item -ItemType Directory -Path public -Force
+
+    - echo "Copying files..."
+    # Копируем HTML
+    - Get-ChildItem -Filter *.html | Copy-Item -Destination public
+
+    # Копируем папки (проверяем наличие каждой)
+    - if (Test-Path css) { Copy-Item -Recurse -Force css public }
+    - if (Test-Path js) { Copy-Item -Recurse -Force js public }
+    - if (Test-Path img) { Copy-Item -Recurse -Force img public }
+    - if (Test-Path config.json) { Copy-Item -Force config.json public }
+
+    - echo "Done."
   artifacts:
     paths:
       - public
-    expire_in: 30 days
   only:
     - main
     - master
-
-# Правила для веток разработки (опционально)
-review:
-  stage: deploy
-  script:
-    - echo "This would deploy a review app for merge requests"
-  only:
-    - merge_requests
-  except:
-    - main
-    - master
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    url: https://$CI_PROJECT_NAMESPACE.gitlab.io/$CI_PROJECT_NAME
-    on_stop: stop_review
-  variables:
-    PUBLIC_URL: "/$CI_PROJECT_NAME"
-
-stop_review:
-  stage: deploy
-  script:
-    - echo "Stopping review environment"
-  when: manual
-  only:
-    - merge_requests
-  except:
-    - main
-    - master
-  environment:
-    name: review/$CI_COMMIT_REF_NAME
-    action: stop
