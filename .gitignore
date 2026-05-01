@@ -160,3 +160,4 @@ settings_local.py
 venv/
 .idea/
 .vscode/
+desktop.ini

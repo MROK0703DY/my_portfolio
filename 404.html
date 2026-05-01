@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Страница не найдена | Портфолио</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vidget.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Дополнительные стили для страницы 404 */
+        .error-section {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            font-family: var(--font-secondary);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        .error-description {
+            font-size: 1.125rem;
+            color: var(--gray-color);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-error {
+            padding: 0.875rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        .btn-error-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-error-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-error-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-error-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            .error-title {
+                font-size: 2rem;
+            }
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-error {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo" style="color: red;">Портфолио</a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Главная</a></li>
+                <li><a href="index.html#about">Обо мне</a></li>
+                <li><a href="index.html#skills">Навыки</a></li>
+                <li><a href="index.html#projects">Проекты</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Основное содержимое 404 -->
+    <main class="error-section">
+        <div class="container error-container">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Упс! Страница потерялась</h1>
+            <p class="error-description">
+                Похоже, этот проект еще в разработке или ссылка была изменена.
+                Вы можете вернуться на главную страницу или просмотреть мои проекты.
+            </p>
+            <div class="error-actions">
+                <a href="index.html" class="btn-error btn-error-primary">
+                    <i class="fas fa-home"></i> Вернуться на главную
+                </a>
+                <a href="index.html#projects" class="btn-error btn-error-secondary">
+                    <i class="fas fa-code"></i> Посмотреть проекты
+                </a>
+            </div>
+            <div style="margin-top: 3rem; padding: 1.5rem; background-color: rgba(67, 97, 238, 0.05); border-radius: var(--border-radius);">
+                <p style="margin-bottom: 0.5rem; color: var(--dark-color); font-weight: 500;">
+                    <i class="fas fa-lightbulb"></i> Подсказка:
+                </p>
+                <p style="color: var(--gray-color); font-size: 0.95rem;">
+                    Если вы ищете конкретный раздел, используйте навигацию выше или 
+                    <a href="index.html#contact" style="color: var(--primary-color); text-decoration: underline;">свяжитесь со мной</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div id="div-footer" class="container-two neon-shift">
+                    <p class="footer-an">© OkITSphere 2026</p>
+                    <a class="footer-logo">
+                        <img src="https://i.pinimg.com/originals/35/7a/9e/357a9e87c7da8ae21ef1a8f00e2e25cc.jpg" width="100px" height="50px" alt="Логотип">
+                    </a>
+                </div><br>
+                <div class="social-links">
+                    <a href="img/2026/github.png" id="my-gh"><i class="fab fa-github"></i></a>
+                    <a href="https://gitlab.com/OkRu/portfolio-site" id="my-gl"><i class="fab fa-gitlab"></i></a>
+                    <a href="https://sourcecraft.dev/mrd007ok003/my-blog" id="my-sc"><i class="fas fa-rocket"></i></a>
+                    <a href="https://gitverse.ru/Ingwar/form_php_db" id="my-gv"><i class="fas fa-code"></i></a>
+                    <a href="img/2026/vk.png" id="my-vk"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Прокрутить наверх">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/app.js" defer></script>
+    <script>
+        // Адаптация для мобильного меню на странице 404
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Кнопка "Наверх"
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        scrollToTopBtn.classList.add('visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('visible');
+                    }
+                });
+                
+                scrollToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

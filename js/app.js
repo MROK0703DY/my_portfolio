@@ -4,31 +4,28 @@
 // Главная функция инициализации приложения
 async function initApp() {
   try {
-    // 1. Загружаем конфиг и настраиваем ссылки
-    await setupLinksFromConfig();
-
-    // 2. Инициализация мобильного меню
+    // 1. Инициализация мобильного меню
     initMobileMenu();
 
-    // 3. Инициализация плавной прокрутки
+    // 2. Инициализация плавной прокрутки
     initSmoothScroll();
 
-    // 4. Инициализация отправки формы
+    // 3. Инициализация отправки формы
     initContactForm();
 
-    // 5. Инициализация анимаций при скролле
+    // 4. Инициализация анимаций при скролле
     initScrollAnimations();
 
-    // 6. Инициализация динамического года в футере
+    // 5. Инициализация динамического года в футере
     initCurrentYear();
 
-    // 7. Инициализация кнопки "Наверх"
+    // 6. Инициализация кнопки "Наверх"
     initScrollToTopButton();
 
-    // 8. Инициализация копирования email
+    // 7. Инициализация копирования email
     initEmailCopy();
 
-    // 9. Инициализация подсветки активного пункта меню
+    // 8. Инициализация подсветки активного пункта меню
     initActiveMenuHighlight();
 
     console.log("Приложение инициализировано успешно");
@@ -38,72 +35,6 @@ async function initApp() {
 }
 
 // Функция загрузки конфига и настройки ссылок
-async function setupLinksFromConfig() {
-  try {
-    // Читаем файл config.json
-    const response = await fetch("config.json");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const config = await response.json();
-
-    // Список ID и соответствующих ключей в JSON
-    const mapping = {
-      "my-gh": config.github,
-      "my-gl": config.gitlub,
-      "my-sc": config.sourcecraft,
-      "my-gv": config.gitverse,
-      "my-vk": config.vk,
-    };
-
-    // Проходим циклом по всем элементам
-    for (const [id, url] of Object.entries(mapping)) {
-      const element = document.getElementById(id);
-
-      if (element) {
-        // Исправляем undefined: если в конфиге нет ссылки, ставим заглушку '#'
-        element.href = url || "#";
-
-        if (!url) {
-          console.warn(
-            `Предупреждение: ссылка для ID "${id}" не найдена в JSON`,
-          );
-        }
-      }
-    }
-
-    console.log("Конфигурация загружена успешно!");
-  } catch (error) {
-    console.error("Ошибка загрузки конфига:", error);
-    // Устанавливаем значения по умолчанию (пути к изображениям) в случае ошибки
-    const defaultConfig = {
-      github: "img/2026/github.png",
-      gitlub: "img/2026/gitlub.png",
-      sourcecraft: "img/2026/sourcecraft.png",
-      gitverse: "img/2026/gitverse.png",
-      vk: "img/2026/vk.png",
-    };
-
-    // Применяем значения по умолчанию
-    const mapping = {
-      "my-gh": defaultConfig.github,
-      "my-gl": defaultConfig.gitlub,
-      "my-sc": defaultConfig.sourcecraft,
-      "my-gv": defaultConfig.gitverse,
-      "my-vk": defaultConfig.vk,
-    };
-
-    for (const [id, url] of Object.entries(mapping)) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.href = url;
-      }
-    }
-
-    console.log("Использованы значения по умолчанию.");
-  }
-}
-
 // Мобильное меню
 function initMobileMenu() {
   const menuToggle = document.querySelector(".menu-toggle");
